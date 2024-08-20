@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ipuvdd6fyvi3"]
+
+[ext_resource type="Shader" path="res://shader/player.gdshader" id="1_faptm"]
+
+[resource]
+shader = ExtResource("1_faptm")
+shader_parameter/time_ext = null

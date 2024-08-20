@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5lk4ep55hc6s"]
+
+[ext_resource type="TileSet" uid="uid://dl3vypi6sgp10" path="res://Prefab/BasicTiles.tres" id="1_qvly6"]
+[ext_resource type="PackedScene" uid="uid://cwsd4vw42qy7c" path="res://Prefab/player.tscn" id="2_fgqlx"]
+[ext_resource type="Script" path="res://Level/CamFollow.gd" id="3_qn1kq"]
+[ext_resource type="Script" path="res://Level/ManipScript.gd" id="4_kfogs"]
+[ext_resource type="TileSet" uid="uid://c4vhc26syieov" path="res://Level/tilemap_small.tres" id="5_5xxh5"]
+
+[node name="level_1_big" type="Node2D"]
+
+[node name="World" type="TileMap" parent="."]
+tile_set = ExtResource("1_qvly6")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(-1114118, 65536, 0, -1114117, 65536, 0, -1114116, 65536, 0, -1114115, 65536, 0, -1114114, 65536, 0, -1114113, 65536, 0, -1179648, 65536, 0, -1114119, 65536, 0, -1048583, 65536, 0, -983047, 65536, 0, -917511, 65536, 0, -851975, 65536, 0, -786439, 65536, 0, -720903, 65536, 0, -655367, 65536, 0, -589831, 65536, 0, -524295, 65536, 0, -458759, 65536, 0, -393223, 65536, 0, -327687, 65536, 0, -2555911, 65536, 0, -2490375, 65536, 0, -2424839, 65536, 0, -2359303, 65536, 0, -2293767, 65536, 0, -2228231, 65536, 0, -2162695, 65536, 0, -2097159, 65536, 0, -2031623, 65536, 0, -1966087, 65536, 0, -1900551, 65536, 0, -1835015, 65536, 0, -1769479, 65536, 0, -1703943, 65536, 0, -1638407, 65536, 0, -1572871, 65536, 0, -1507335, 65536, 0, -1441799, 65536, 0, -1376263, 65536, 0, -1310727, 65536, 0, -1245191, 65536, 0, -1179655, 65536, 0, -262151, 65536, 0, -196615, 65536, 0, -131079, 65536, 0, -65543, 65536, 0, -7, 65536, 0, 65529, 65536, 0, 131065, 65536, 0, -1179628, 65536, 0, -1179627, 65536, 0, -1179626, 65536, 0, -1179625, 65536, 0, -1179624, 65536, 0, -1179623, 65536, 0, -1179622, 65536, 0, -1179621, 65536, 0, -1179620, 65536, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_fgqlx")]
+position = Vector2(-83, -608)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow")]
+position = Vector2(499, -519)
+zoom = Vector2(0.595, 0.595)
+script = ExtResource("3_qn1kq")
+follow = NodePath("../Player")
+move_axis = Vector2(1, 1)
+
+[node name="Manip" type="Node2D" parent="." node_paths=PackedStringArray("ori")]
+script = ExtResource("4_kfogs")
+ori = NodePath("../Player")
+
+[node name="Tile" type="TileMap" parent="Manip"]
+tile_set = ExtResource("1_qvly6")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1769443, 262144, 0, -1703907, 262144, 0, -1638371, 262144, 0, -1572835, 262144, 0, -1507299, 262144, 0, -1441763, 262144, 0, -1376227, 262144, 0, -1310691, 262144, 0, -1245155, 262144, 0, -1179619, 262144, 0)
+
+[node name="TileSmall" type="TileMap" parent="Manip/Tile"]
+tile_set = ExtResource("5_5xxh5")
+format = 2
+layer_0/tile_data = PackedInt32Array(-2359293, 458752, 0, -2359292, 458752, 0, -2359291, 458752, 0, -2359290, 458752, 0, -2359289, 458752, 0, -2359288, 458752, 0, -2359287, 458752, 0, -2359286, 458752, 0, -2359285, 458752, 0, -2359284, 458752, 0, -2359283, 458752, 0)
+
+[node name="AvoidTile" type="TileMap" parent="."]
+format = 2
