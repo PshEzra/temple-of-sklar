@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbkgdk4krpadi"]
+
+[ext_resource type="Script" path="res://Level/Cutscene.gd" id="1_k086f"]
+[ext_resource type="Texture2D" uid="uid://cd2v5thaicksn" path="res://icon.svg" id="2_r712t"]
+[ext_resource type="Texture2D" uid="uid://de4bxivofyybc" path="res://Asset/Outro.png" id="3_fa7jf"]
+[ext_resource type="FontFile" uid="uid://drlaam1m0qyt5" path="res://Asset/press-start.regular.ttf" id="4_nor3b"]
+
+[node name="Outro" type="Node2D"]
+script = ExtResource("1_k086f")
+screen = "res://Level/main_menu.tscn"
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.0273438, 0.0429688, 0.078125, 1)
+position = Vector2(-116, 702)
+scale = Vector2(29.2266, 19.3125)
+texture = ExtResource("2_r712t")
+
+[node name="Intro" type="Sprite2D" parent="."]
+position = Vector2(47.5, -19.4999)
+scale = Vector2(0.913, 0.913)
+texture = ExtResource("3_fa7jf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(56, -28)
+zoom = Vector2(0.705, 0.705)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 545.0
+offset_top = 299.0
+offset_right = 1028.0
+offset_bottom = 403.0
+theme_override_fonts/font = ExtResource("4_nor3b")
+theme_override_font_sizes/font_size = 21
+text = "Thank you 
+for playing!
+Press SPACE 
+to Continue
+"

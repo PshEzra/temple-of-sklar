@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bac70lr5l61kv"]
+[gd_scene load_steps=20 format=3 uid="uid://bac70lr5l61kv"]
 
 [ext_resource type="TileSet" uid="uid://bkh7mslscoxag" path="res://Asset/Background.tres" id="1_02dyi"]
 [ext_resource type="TileSet" uid="uid://dl3vypi6sgp10" path="res://Prefab/BasicTiles.tres" id="1_2wtl8"]
 [ext_resource type="TileSet" uid="uid://brk72ru6numdr" path="res://Asset/MainTilemap.tres" id="1_7vwtc"]
 [ext_resource type="Script" path="res://Prefab/SceneManager.gd" id="1_t2lc8"]
+[ext_resource type="Texture2D" uid="uid://cusyky5ma3x1w" path="res://Asset/BackgrounImage.png" id="2_408wv"]
 [ext_resource type="PackedScene" uid="uid://cwsd4vw42qy7c" path="res://Prefab/player.tscn" id="2_y3qtw"]
 [ext_resource type="Script" path="res://Level/ManipScript.gd" id="3_cftb2"]
 [ext_resource type="Script" path="res://Level/CamFollow.gd" id="3_u4jln"]
@@ -13,9 +14,10 @@
 [ext_resource type="Script" path="res://Prefab/ExitUI.gd" id="10_6hnjw"]
 [ext_resource type="FontFile" uid="uid://1t5dfymf6vqc" path="res://Asset/lunchds.ttf" id="11_3yc8g"]
 [ext_resource type="PackedScene" uid="uid://618t3fyxsgfq" path="res://Level/level_5.tscn" id="12_bxy5q"]
-[ext_resource type="Script" path="res://Prefab/MenuButton.gd" id="14_3q0tm"]
+[ext_resource type="Script" path="res://Prefab/MenuButton.gd" id="14_2vja4"]
 [ext_resource type="AudioStream" uid="uid://b3tagt80omwf" path="res://Asset/Audio/dead.wav" id="14_t1jqg"]
 [ext_resource type="AudioStream" uid="uid://tey2sj0k76gx" path="res://Asset/Audio/ambience.mp3" id="15_0r71g"]
+[ext_resource type="PackedScene" uid="uid://c8co8d2l51l1a" path="res://Level/main_menu.tscn" id="15_k13qa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvj8t"]
 size = Vector2(70, 83)
@@ -49,10 +51,12 @@ format = 2
 layer_0/tile_data = PackedInt32Array(589818, 65536, 5, 589819, 65536, 5, 589820, 65536, 5, 589821, 65536, 5, 589822, 65536, 5, 589823, 65536, 5, 524288, 65536, 5, 524289, 65536, 5, 524290, 65536, 5, 524291, 65536, 5, 524292, 65536, 5, 524293, 65536, 5, 524294, 65536, 5, 524295, 65536, 5, 524296, 65536, 5, 524297, 65536, 5, 524298, 65536, 5, 524299, 65536, 5)
 
 [node name="Manip" type="Node2D" parent="." node_paths=PackedStringArray("ori")]
+z_index = 11
 script = ExtResource("3_cftb2")
 ori = NodePath("../Player")
 
 [node name="Tile" type="TileMap" parent="Manip"]
+z_index = 11
 texture_filter = 1
 tile_set = ExtResource("1_2wtl8")
 format = 2
@@ -136,6 +140,7 @@ max_pos = NodePath("../UltimatePoints/Max(min)Pos")
 min_pos = NodePath("../UltimatePoints/Min(max)Pos")
 
 [node name="ExitUI" type="Control" parent="Camera2D"]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_left = -725.0
@@ -201,7 +206,24 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Button" type="Button" parent="Camera2D/ExitUI/Panel/VBoxContainer/Main Menu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_1i2gk")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+script = ExtResource("14_2vja4")
+main_menu = ExtResource("15_k13qa")
+
 [node name="GameOver" type="Control" parent="Camera2D"]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_left = -759.0
@@ -264,6 +286,30 @@ custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="Camera2D/GameOver/Panel/VBoxContainer/Main Menu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_1i2gk")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+script = ExtResource("14_2vja4")
+main_menu = ExtResource("15_k13qa")
+
+[node name="BackgrounImage" type="Sprite2D" parent="Camera2D"]
+modulate = Color(1, 1, 1, 0.560784)
+z_index = -1
+texture_filter = 1
+position = Vector2(-61, -8.00003)
+scale = Vector2(2.997, 2.997)
+texture = ExtResource("2_408wv")
 
 [node name="Died" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_t1jqg")

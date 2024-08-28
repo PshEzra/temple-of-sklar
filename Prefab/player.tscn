@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwsd4vw42qy7c"]
+[gd_scene load_steps=17 format=3 uid="uid://cwsd4vw42qy7c"]
 
 [ext_resource type="Script" path="res://Prefab/PlayerControl.gd" id="1_80yso"]
 [ext_resource type="Material" uid="uid://ipuvdd6fyvi3" path="res://Player.tres" id="2_80ftt"]
 [ext_resource type="Texture2D" uid="uid://cm0mlx3p77ift" path="res://Asset/TempSprite.png" id="2_ear3a"]
+[ext_resource type="Shader" path="res://Level/Freeze.gdshader" id="2_tcrw0"]
+[ext_resource type="Texture2D" uid="uid://cd2v5thaicksn" path="res://icon.svg" id="3_x5egy"]
 [ext_resource type="Texture2D" uid="uid://bmr74speny4da" path="res://Asset/Jewel_2.png" id="4_xjbhm"]
 [ext_resource type="Texture2D" uid="uid://bvno4v4q8bsc4" path="res://Asset/Axis.png" id="5_qtwyi"]
 [ext_resource type="AudioStream" uid="uid://fp80arudry7" path="res://Asset/Audio/Footstep.wav" id="6_7y1kq"]
@@ -12,6 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://e4sis5yxe03f" path="res://Asset/Audio/click.wav" id="10_nc4cg"]
 [ext_resource type="AudioStream" uid="uid://b3tagt80omwf" path="res://Asset/Audio/dead.wav" id="11_4tdhs"]
 [ext_resource type="AudioStream" uid="uid://uilr4860m00o" path="res://Asset/Audio/earthmoving.wav" id="12_0wp02"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ngva"]
+shader = ExtResource("2_tcrw0")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pfupr"]
 radius = 15.0
@@ -23,14 +28,22 @@ script = ExtResource("1_80yso")
 [node name="Axis" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.4)
+z_index = 2
 texture_filter = 1
 scale = Vector2(3.534, 3.534)
 texture = ExtResource("5_qtwyi")
+
+[node name="Freeze" type="Sprite2D" parent="Axis"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_1ngva")
+scale = Vector2(14.9618, 12.8042)
+texture = ExtResource("3_x5egy")
 
 [node name="Sprite" type="Node2D" parent="."]
 position = Vector2(0, 16)
 
 [node name="Icon" type="Sprite2D" parent="Sprite"]
+z_index = 4
 texture_filter = 1
 material = ExtResource("2_80ftt")
 position = Vector2(0, -16)
@@ -38,6 +51,7 @@ rotation = 0.00418665
 texture = ExtResource("2_ear3a")
 
 [node name="Gem" type="Sprite2D" parent="Sprite"]
+z_index = 4
 texture_filter = 1
 position = Vector2(3, -9)
 texture = ExtResource("4_xjbhm")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://5es8fm5d8r3s"]
+
+[ext_resource type="Texture2D" uid="uid://cd2v5thaicksn" path="res://icon.svg" id="1_7m2d5"]
+[ext_resource type="Script" path="res://Level/Cutscene.gd" id="1_g7ace"]
+[ext_resource type="Texture2D" uid="uid://8b6c6nl6no6" path="res://Asset/intro.png" id="2_ai2qu"]
+[ext_resource type="FontFile" uid="uid://drlaam1m0qyt5" path="res://Asset/press-start.regular.ttf" id="4_vifpk"]
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_g7ace")
+screen = "res://Level/main_menu.tscn"
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.0273438, 0.0429688, 0.078125, 1)
+position = Vector2(-116, 702)
+scale = Vector2(29.2266, 19.3125)
+texture = ExtResource("1_7m2d5")
+
+[node name="Intro" type="Sprite2D" parent="."]
+position = Vector2(-25, 127)
+scale = Vector2(1.132, 1.132)
+texture = ExtResource("2_ai2qu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(56, -28)
+zoom = Vector2(0.705, 0.705)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 279.0
+offset_top = 366.0
+offset_right = 1222.0
+offset_bottom = 470.0
+theme_override_fonts/font = ExtResource("4_vifpk")
+theme_override_font_sizes/font_size = 21
+text = "Press SPACE to Continue
+"

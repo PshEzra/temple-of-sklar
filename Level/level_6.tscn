@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://3u8qukqi4567"]
+[gd_scene load_steps=25 format=3 uid="uid://3u8qukqi4567"]
 
 [ext_resource type="Script" path="res://Prefab/SceneManager.gd" id="1_3tx41"]
 [ext_resource type="TileSet" uid="uid://brk72ru6numdr" path="res://Asset/MainTilemap.tres" id="1_diwqr"]
@@ -17,8 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://b8kslufrfaycy" path="res://Level/level_7.tscn" id="13_rcgnd"]
 [ext_resource type="Script" path="res://Prefab/ExitScript.gd" id="15_xg01f"]
 [ext_resource type="Texture2D" uid="uid://bffyx6fvtq630" path="res://Asset/Pointer.png" id="16_8nyju"]
+[ext_resource type="Script" path="res://Prefab/MenuButton.gd" id="18_67yx3"]
 [ext_resource type="AudioStream" uid="uid://b3tagt80omwf" path="res://Asset/Audio/dead.wav" id="18_ley06"]
+[ext_resource type="PackedScene" uid="uid://c8co8d2l51l1a" path="res://Level/main_menu.tscn" id="19_lswcb"]
 [ext_resource type="AudioStream" uid="uid://tey2sj0k76gx" path="res://Asset/Audio/ambience.mp3" id="19_t46ol"]
+[ext_resource type="Texture2D" uid="uid://cusyky5ma3x1w" path="res://Asset/BackgrounImage.png" id="22_ydxhy"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_yhxn2"]
 frames = 4
@@ -62,7 +65,7 @@ target_position = Vector2(1500, 0)
 show_behind_parent = true
 top_level = true
 visibility_layer = 4
-z_index = -1
+z_index = 11
 texture_filter = 1
 width = 15.0
 texture = SubResource("AnimatedTexture_yhxn2")
@@ -81,7 +84,7 @@ target_position = Vector2(1500, 0)
 show_behind_parent = true
 top_level = true
 visibility_layer = 4
-z_index = -1
+z_index = 11
 texture_filter = 1
 width = 15.0
 texture = SubResource("AnimatedTexture_yhxn2")
@@ -101,17 +104,19 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-1310711, 131075, 4, -1310703, 131075, 4, 196609, 65536, 5, 196610, 65536, 5, 196611, 65536, 5, 196612, 65536, 5, 196613, 65536, 5, 196614, 65536, 5, 196615, 65536, 5, 196616, 65536, 5, 196617, 65536, 5, 196618, 65536, 5, 196619, 65536, 5, 196620, 65536, 5, 196621, 65536, 5, 196622, 65536, 5, 196623, 65536, 5, 196624, 65536, 5, 196625, 65536, 5, 196626, 65536, 5, 196627, 65536, 5, 196628, 65536, 5, 196629, 65536, 5, 196630, 65536, 5, 196631, 65536, 5, 196632, 65536, 5, 196633, 65536, 5)
 
 [node name="Manip" type="Node2D" parent="." node_paths=PackedStringArray("ori")]
+z_index = 2
 script = ExtResource("3_gl7tt")
 ori = NodePath("../Player")
 
 [node name="Tile" type="TileMap" parent="Manip"]
+z_index = 2
 texture_filter = 1
 tile_set = ExtResource("4_nio30")
 format = 2
 layer_0/tile_data = PackedInt32Array(-1245171, 393217, 2, -1179635, 262145, 2, -1114099, 262145, 2, -1048563, 262145, 2, -983027, 262145, 2, -917491, 262145, 2, -851955, 262145, 2, -786419, 262145, 2, -720883, 262145, 2, -655347, 262145, 2, -589811, 262145, 2, -524275, 393217, 3, -524280, 196609, 3, -524279, 196609, 3, -524278, 196609, 3, -524277, 196609, 3, -524276, 196609, 3, -524274, 196609, 3, -524273, 196609, 3, -524272, 196609, 3, -524271, 196609, 3, -524270, 196609, 3, -589818, 262145, 2, -655354, 262145, 2, -589804, 262145, 2, -655340, 262145, 2, -524281, 196609, 3, -524269, 196609, 3, -524282, 393217, 3, -524268, 393217, 3, -524267, 458753, 3, -524283, 131073, 3, -720890, 393217, 2, -720876, 393217, 2)
 
 [node name="Player" parent="." instance=ExtResource("2_4m7yj")]
-position = Vector2(705, -473)
+position = Vector2(120, -473)
 
 [node name="UltimatePoints" type="Node2D" parent="."]
 
@@ -190,6 +195,7 @@ max_pos = NodePath("../UltimatePoints/Min(max)Pos")
 min_pos = NodePath("../UltimatePoints/Max(min)Pos")
 
 [node name="ExitUI" type="Control" parent="Camera2D"]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_left = -544.0
@@ -254,7 +260,24 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Button" type="Button" parent="Camera2D/ExitUI/Panel/VBoxContainer/Main Menu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_jyhv6")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+script = ExtResource("18_67yx3")
+main_menu = ExtResource("19_lswcb")
+
 [node name="GameOver" type="Control" parent="Camera2D"]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_left = -578.0
@@ -318,6 +341,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Button" type="Button" parent="Camera2D/GameOver/Panel/VBoxContainer/Main Menu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_jyhv6")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+script = ExtResource("18_67yx3")
+main_menu = ExtResource("19_lswcb")
+
 [node name="Died" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_ley06")
 
@@ -325,7 +364,17 @@ stream = ExtResource("18_ley06")
 stream = ExtResource("19_t46ol")
 autoplay = true
 
+[node name="BackgrounImage" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.560784)
+z_index = -1
+texture_filter = 1
+position = Vector2(472, -814)
+scale = Vector2(6.17125, 6.12325)
+texture = ExtResource("22_ydxhy")
+
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_exited" from="Exit" to="Exit" method="_on_body_exited"]
 [connection signal="pressed" from="Camera2D/ExitUI/Panel/VBoxContainer/Next Level/Button" to="Camera2D/ExitUI" method="_on_button_pressed"]
+[connection signal="pressed" from="Camera2D/ExitUI/Panel/VBoxContainer/Main Menu/Button" to="Camera2D/ExitUI/Panel/VBoxContainer/Main Menu/Button" method="_on_pressed"]
 [connection signal="pressed" from="Camera2D/GameOver/Panel/VBoxContainer/Restart/Button" to="Camera2D/GameOver" method="_on_button_pressed"]
+[connection signal="pressed" from="Camera2D/GameOver/Panel/VBoxContainer/Main Menu/Button" to="Camera2D/GameOver/Panel/VBoxContainer/Main Menu/Button" method="_on_pressed"]

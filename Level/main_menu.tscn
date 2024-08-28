@@ -1,15 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8co8d2l51l1a"]
+[gd_scene load_steps=9 format=3 uid="uid://c8co8d2l51l1a"]
 
 [ext_resource type="FontFile" uid="uid://drlaam1m0qyt5" path="res://Asset/press-start.regular.ttf" id="1_2r4rj"]
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_mnxra"]
 [ext_resource type="FontFile" uid="uid://1t5dfymf6vqc" path="res://Asset/lunchds.ttf" id="2_3kndi"]
 [ext_resource type="Script" path="res://Level/LevelSelect.gd" id="3_r7hpe"]
-[ext_resource type="PackedScene" uid="uid://dtqs7taxsputk" path="res://Prefab/level_2.tscn" id="4_ugro2"]
-[ext_resource type="PackedScene" uid="uid://bac70lr5l61kv" path="res://Level/level_4.tscn" id="5_81foe"]
-[ext_resource type="PackedScene" uid="uid://618t3fyxsgfq" path="res://Level/level_5.tscn" id="6_bfspl"]
-[ext_resource type="PackedScene" uid="uid://3u8qukqi4567" path="res://Level/level_6.tscn" id="7_43bfs"]
-[ext_resource type="PackedScene" uid="uid://b8kslufrfaycy" path="res://Level/level_7.tscn" id="8_nt552"]
-[ext_resource type="PackedScene" uid="uid://bhqdj33cjou27" path="res://Level/level_8.tscn" id="9_2pp32"]
+[ext_resource type="Texture2D" uid="uid://bgj0w5ngigo6a" path="res://Asset/Menu Bg.png" id="4_latkn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pe62n"]
+bg_color = Color(0.964844, 0.699219, 0.308594, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmv5j"]
+bg_color = Color(0.984314, 0.772549, 0.513726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpx1y"]
+bg_color = Color(0.745098, 0.52549, 0.129412, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,6 +31,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LevelSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_latkn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect"]
 layout_mode = 1
@@ -66,51 +79,81 @@ columns = 3
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_2r4rj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_pe62n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmv5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpx1y")
 text = "1"
 script = ExtResource("3_r7hpe")
-level = ExtResource("4_ugro2")
+level = "res://Prefab/level_2.tscn"
 
 [node name="Button2" type="Button" parent="LevelSelect/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_2r4rj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_pe62n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmv5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpx1y")
 text = "2"
 script = ExtResource("3_r7hpe")
-level = ExtResource("5_81foe")
+level = "res://Level/level_4.tscn"
 
 [node name="Button3" type="Button" parent="LevelSelect/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_2r4rj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_pe62n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmv5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpx1y")
 text = "3"
 script = ExtResource("3_r7hpe")
-level = ExtResource("6_bfspl")
+level = "res://Level/level_5.tscn"
 
 [node name="Button4" type="Button" parent="LevelSelect/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_2r4rj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_pe62n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmv5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpx1y")
 text = "4"
 script = ExtResource("3_r7hpe")
-level = ExtResource("7_43bfs")
+level = "res://Level/level_6.tscn"
 
 [node name="Button5" type="Button" parent="LevelSelect/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_2r4rj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_pe62n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmv5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpx1y")
 text = "5
 "
 script = ExtResource("3_r7hpe")
-level = ExtResource("8_nt552")
+level = "res://Level/level_7.tscn"
 
 [node name="Button6" type="Button" parent="LevelSelect/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_2r4rj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_pe62n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmv5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpx1y")
 text = "6
 "
 script = ExtResource("3_r7hpe")
-level = ExtResource("9_2pp32")
+level = "res://Level/level_8.tscn"
 
 [node name="MainMenu" type="Panel" parent="."]
 layout_mode = 1
@@ -119,6 +162,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_latkn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 1
@@ -153,11 +205,28 @@ text = "S'klar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button2" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_2r4rj")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_pe62n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmv5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpx1y")
+text = "Play Story"
+script = ExtResource("3_r7hpe")
+level = "res://Level/intro.tscn"
+
 [node name="Button" type="Button" parent="MainMenu/VBoxContainer"]
 custom_minimum_size = Vector2(20, 60)
 layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.964844, 0.699219, 0.308594, 1)
 theme_override_fonts/font = ExtResource("1_2r4rj")
 theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_pe62n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmv5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dpx1y")
 text = "Start"
 
 [connection signal="pressed" from="LevelSelect/VBoxContainer/GridContainer/Button" to="LevelSelect/VBoxContainer/GridContainer/Button" method="_on_pressed"]
@@ -166,4 +235,5 @@ text = "Start"
 [connection signal="pressed" from="LevelSelect/VBoxContainer/GridContainer/Button4" to="LevelSelect/VBoxContainer/GridContainer/Button4" method="_on_pressed"]
 [connection signal="pressed" from="LevelSelect/VBoxContainer/GridContainer/Button5" to="LevelSelect/VBoxContainer/GridContainer/Button5" method="_on_pressed"]
 [connection signal="pressed" from="LevelSelect/VBoxContainer/GridContainer/Button6" to="LevelSelect/VBoxContainer/GridContainer/Button6" method="_on_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Button2" to="MainMenu/VBoxContainer/Button2" method="_on_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Button" to="." method="_on_button_pressed"]

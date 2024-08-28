@@ -105,5 +105,7 @@ func add_time(delt):
 	mat.set_shader_parameter("time_ext", time)
 
 func dead():
+	if is_transforming:
+		return
 	get_parent().died()
 	queue_free()
